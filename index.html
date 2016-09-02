@@ -75,7 +75,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -88,10 +88,6 @@
         
           <li>
             <a href="/2016/09/01/github-hexo-blog/">使用Github与Hexo搭建博客</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/01/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -159,91 +155,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>介绍如何搭建个人博客，系统Windows 7, 64bit。</p>
-<p>&lt;–!more–&gt;</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h4><p>本机安装<a href="https://nodejs.org/en/" target="_blank" rel="external">node.js</a>，安装路径任意设置，无需其他设置。</p>
-<h4 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h4><p>本机安装<a href="https://www.git-scm.com/download/win" target="_blank" rel="external">Git Bash</a>，路径任意，无需其他设置。</p>
-<h4 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h4><p>打开Git Bash，执行Hexo安装命令：</p>
-<pre><code>npm install -g hexo
-</code></pre><p>为博客建立路径：</p>
-<pre><code>cd d:
-mkdir hexoblog
-</code></pre><p>进入博客目录：</p>
-<pre><code>cd hexoblog
-</code></pre><p>执行：</p>
-<pre><code>hexo init
-</code></pre><p>初始化完成整个博客架构。</p>
-<h3 id="Github设置"><a href="#Github设置" class="headerlink" title="Github设置"></a>Github设置</h3><h4 id="建立repository"><a href="#建立repository" class="headerlink" title="建立repository"></a>建立repository</h4><p>登录<a href="https://github.com/" target="_blank" rel="external">Github</a>，假设用户名为<code>xxoo</code>，进入个人的<code>profile</code>，进入<code>Repositories</code>，点击<code>New</code>，在默认框中输入<code>xxoo.github.io</code>，其他待填内容保持为默认即可，空白也无法，新建的repository的<code>Branch</code>选为<code>master</code>。</p>
-<h4 id="本地SSH-key设置"><a href="#本地SSH-key设置" class="headerlink" title="本地SSH key设置"></a>本地SSH key设置</h4><p>在Git Bash中，输入：</p>
-<pre><code>ssh-keygen -t rsa -b 4096 -C &quot;your github account&apos;s registered email&quot;
-</code></pre><p>按照提示完成，在系统<code>C:/Users/your pc name/.ssh/</code>下，拷贝文件<code>id_rsa.pub</code>中的内容。登录<a href="https://github.com/" target="_blank" rel="external">Github</a>，进入<code>Settings</code>，进入<code>SSH and GPG keys</code>，点击<code>New SSH Key</code>，将拷贝好的内容复制，为此SSH key任意命名即可。</p>
-<h3 id="博客生成与部署"><a href="#博客生成与部署" class="headerlink" title="博客生成与部署"></a>博客生成与部署</h3><h4 id="安装部署器"><a href="#安装部署器" class="headerlink" title="安装部署器"></a>安装部署器</h4><p>进入博客目录下，执行：</p>
-<pre><code>npm install hexo-deployer-git --save
-npm install hexo-server --save
-</code></pre><p>安装一系列所需工具。</p>
-<h4 id="config-yml文件配置"><a href="#config-yml文件配置" class="headerlink" title="_config.yml文件配置"></a>_config.yml文件配置</h4><p>在博客目录下，打开<code>_config.yml</code>文件，<code>deploy</code>下套用以下内容：</p>
-<pre><code>type: git
-repository: git@github.com:xxoo/xxoo.github.io.git
-branch: master
-</code></pre><h4 id="生成与部署"><a href="#生成与部署" class="headerlink" title="生成与部署"></a>生成与部署</h4><p>在博客目录下，执行：</p>
-<pre><code>hexo g
-</code></pre><p>生成博客内容，之后执行：</p>
-<pre><code>hexo d
-</code></pre><p>部署博客。</p>
-<p>在浏览器中访问<code>https://ambertttm.github.io</code>即可。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2016/09/01/github-hexo-blog/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="ambertttm.github.io/2016/09/01/github-hexo-blog/" data-id="cisl3w8t40001lwi28iunwsfp" class="article-share-link">Share</a>
+      <a data-url="ambertttm.github.io/2016/09/01/github-hexo-blog/" data-id="cisl46tu20000bci235u1m2yr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Blog/">Blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/01/hello-world/" class="article-date">
-  <time datetime="2016-09-01T12:04:13.562Z" itemprop="datePublished">2016-09-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="ambertttm.github.io/2016/09/01/hello-world/" data-id="cisl3w8t10000lwi2m6d1ro9p" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
