@@ -91,9 +91,9 @@
       <div class="article-tags">
         
   
-    <a href='/tags/tricks/' class='pure-button pull-right' style='margin:3px;'>tricks</a>
-  
     <a href='/tags/Linux/' class='pure-button pull-right' style='margin:3px;'>Linux</a>
+  
+    <a href='/tags/tricks/' class='pure-button pull-right' style='margin:3px;'>tricks</a>
   
 
 
@@ -119,6 +119,11 @@
 <h4 id="统计文件夹下目录的个数，包括子文件夹内的"><a href="#统计文件夹下目录的个数，包括子文件夹内的" class="headerlink" title="统计文件夹下目录的个数，包括子文件夹内的"></a>统计文件夹下目录的个数，包括子文件夹内的</h4><p><code>ls -lR | grep &quot;^d&quot; | wc -l</code></p>
 <p>说明：<code>ls -l</code>表示输出当前路径下所有目录和文件的信息，<code>grep &quot;^-&quot;</code>把长列表的输出信息过滤一部分，安装定好的规则保留，<code>wc -l</code>统计输出信息的行数。</p>
 <h3 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h3><h4 id="显示行号"><a href="#显示行号" class="headerlink" title="显示行号"></a>显示行号</h4><p><a href="http://blog.csdn.net/weilaiqing/article/details/6403366" target="_blank" rel="external">vim打开文件时显示行号</a></p>
+<h3 id="解决删除时Device-or-resource-busy的问题"><a href="#解决删除时Device-or-resource-busy的问题" class="headerlink" title="解决删除时Device or resource busy的问题"></a>解决删除时<code>Device or resource busy</code>的问题</h3><p>执行：</p>
+<pre><code>lsof +D /home/to/target/path
+</code></pre><p>在屏幕输出中得到PID，执行：</p>
+<pre><code>kill -s 9 pid-number
+</code></pre><p>之后重新删除。</p>
 
         
       </div>
