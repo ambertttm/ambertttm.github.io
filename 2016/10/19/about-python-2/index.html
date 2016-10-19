@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: python | TQW</title>
+  <title>Python记录(1) | TQW</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -81,15 +81,7 @@
   </header>
   <div id="main-content" class="wrap">
   <div class="inner">
-    <div class="pure-g">
-  <div class="pure-u-1-12"></div>
-  <div class="pure-u-5-6 labal">
-    Current display Tag: <code>python</code>
-  </div>
-</div>
-
-
-  <article class="post">
+    <article class="post">
   <div class="pure-g">
 
     <!-- article: meta -->
@@ -113,14 +105,27 @@
       <header><div class="article-title">
         
   
-    <h1 class="title"><a href="/2016/10/19/about-python-2/">Python记录(1)</a></h1>
+    <h1 class="title">Python记录(1)</h1>
   
 
       </div></header>
       <div class="article-entry">
         
           <p>使用python时遇到的一些问题和解决办法。</p>
-          <a href="ambertttm.github.io/2016/10/19/about-python-2/">Read More</a>
+<a id="more"></a>
+<h3 id="逐行打乱txt文件内容"><a href="#逐行打乱txt文件内容" class="headerlink" title="逐行打乱txt文件内容"></a>逐行打乱txt文件内容</h3><pre><code>import random
+
+with open(&apos;path to your file&apos;, mode = &apos;r&apos;) as myfile:
+    lines = list(myfile)
+
+random.shuffle(lines)
+
+write_to = open(&apos;path to your new file&apos;, &apos;w&apos;)
+for i in range(len(lines)):
+    write_to.write(lines[i])
+
+write_to.close()
+</code></pre>
         
       </div>
       <footer><div class="article-comment">
@@ -130,65 +135,6 @@
     </div>
   </div>
 </article>
-
-
-  <article class="post">
-  <div class="pure-g">
-
-    <!-- article: meta -->
-    <div class="pure-u-1-12 article-meta">
-      <div class="date"><time datetime="2016-10-02T00:26:04.852Z">
-        <div class="day">2</div>
-        <div class="month">Oct 2016</div>
-      </time></div>
-      <div class="article-tags">
-        
-  
-    <a href='/tags/python/' class='pure-button pull-right' style='margin:3px;'>python</a>
-  
-    <a href='/tags/DIP/' class='pure-button pull-right' style='margin:3px;'>DIP</a>
-  
-
-
-      </div>
-    </div>
-
-    <!-- article: main -->
-    <div class="pure-u-11-12">
-      <header><div class="article-title">
-        
-  
-    <h1 class="title"><a href="/2016/10/02/about-python-1/">Python记录(1)</a></h1>
-  
-
-      </div></header>
-      <div class="article-entry">
-        
-          <p>推荐书目：<a href="http://docs.linuxtone.org/ebooks/Python/Thinking_In_Python.pdf">Thinking in Python</a></p>
-          <a href="ambertttm.github.io/2016/10/02/about-python-1/">Read More</a>
-        
-      </div>
-      <footer><div class="article-comment">
-        
-
-      </div></footer>
-    </div>
-  </div>
-</article>
-
-
-
-<div class="pure-g bitpager">
-  <div class="pure-u-1-12"></div>
-  <div class="pure-u-1-4">
-    
-  </div>
-  <div class="pure-u-5-12"></div>
-  <div class="pure-u-1-4">
-    
-  </div>
-</div>
-
 
   </div>
   </div>
