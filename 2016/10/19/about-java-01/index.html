@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: python | TQW</title>
+  <title>JAVA记录(2) | TQW</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
@@ -81,15 +81,7 @@
   </header>
   <div id="main-content" class="wrap">
   <div class="inner">
-    <div class="pure-g">
-  <div class="pure-u-1-12"></div>
-  <div class="pure-u-5-6 labal">
-    Current display Tag: <code>python</code>
-  </div>
-</div>
-
-
-  <article class="post">
+    <article class="post">
   <div class="pure-g">
 
     <!-- article: meta -->
@@ -115,14 +107,23 @@
       <header><div class="article-title">
         
   
-    <h1 class="title"><a href="/2016/10/19/about-java-01/">JAVA记录(2)</a></h1>
+    <h1 class="title">JAVA记录(2)</h1>
   
 
       </div></header>
       <div class="article-entry">
         
           <p>本记录解决window7下，已知汉字GBK编码，使用JAVA输出汉字的方法。</p>
-          <a href="ambertttm.github.io/2016/10/19/about-java-01/">Read More</a>
+<a id="more"></a>
+<p>代码如下：</p>
+<pre><code>cur_gbk_label = &quot;b0a1&quot;;
+byte[] buf = new byte[2];
+buf[0] = (byte)Integer.parseInt(cur_gbk_label.substring(0, 2), 16);
+buf[1] = (byte)Integer.parseInt(cur_gbk_label.substring(2, 4), 16);
+
+System.out.print(new String(buf, &quot;GBK&quot;));
+</code></pre><p>采用这种方法即可在Eclipse的Console中显示出汉字。</p>
+
         
       </div>
       <footer><div class="article-comment">
@@ -132,110 +133,6 @@
     </div>
   </div>
 </article>
-
-
-  <article class="post">
-  <div class="pure-g">
-
-    <!-- article: meta -->
-    <div class="pure-u-1-12 article-meta">
-      <div class="date"><time datetime="2016-10-19T01:38:40.430Z">
-        <div class="day">19</div>
-        <div class="month">Oct 2016</div>
-      </time></div>
-      <div class="article-tags">
-        
-  
-    <a href='/tags/python/' class='pure-button pull-right' style='margin:3px;'>python</a>
-  
-    <a href='/tags/clustering/' class='pure-button pull-right' style='margin:3px;'>clustering</a>
-  
-
-
-      </div>
-    </div>
-
-    <!-- article: main -->
-    <div class="pure-u-11-12">
-      <header><div class="article-title">
-        
-  
-    <h1 class="title"><a href="/2016/10/19/about-python-2/">Python记录(2)</a></h1>
-  
-
-      </div></header>
-      <div class="article-entry">
-        
-          <p>使用python时遇到的一些问题和解决办法。</p>
-          <a href="ambertttm.github.io/2016/10/19/about-python-2/">Read More</a>
-        
-      </div>
-      <footer><div class="article-comment">
-        
-
-      </div></footer>
-    </div>
-  </div>
-</article>
-
-
-  <article class="post">
-  <div class="pure-g">
-
-    <!-- article: meta -->
-    <div class="pure-u-1-12 article-meta">
-      <div class="date"><time datetime="2016-10-02T00:26:04.852Z">
-        <div class="day">2</div>
-        <div class="month">Oct 2016</div>
-      </time></div>
-      <div class="article-tags">
-        
-  
-    <a href='/tags/python/' class='pure-button pull-right' style='margin:3px;'>python</a>
-  
-    <a href='/tags/DIP/' class='pure-button pull-right' style='margin:3px;'>DIP</a>
-  
-
-
-      </div>
-    </div>
-
-    <!-- article: main -->
-    <div class="pure-u-11-12">
-      <header><div class="article-title">
-        
-  
-    <h1 class="title"><a href="/2016/10/02/about-python-1/">Python记录(1)</a></h1>
-  
-
-      </div></header>
-      <div class="article-entry">
-        
-          <p>推荐书目：<a href="http://docs.linuxtone.org/ebooks/Python/Thinking_In_Python.pdf">Thinking in Python</a></p>
-          <a href="ambertttm.github.io/2016/10/02/about-python-1/">Read More</a>
-        
-      </div>
-      <footer><div class="article-comment">
-        
-
-      </div></footer>
-    </div>
-  </div>
-</article>
-
-
-
-<div class="pure-g bitpager">
-  <div class="pure-u-1-12"></div>
-  <div class="pure-u-1-4">
-    
-  </div>
-  <div class="pure-u-5-12"></div>
-  <div class="pure-u-1-4">
-    
-  </div>
-</div>
-
 
   </div>
   </div>
