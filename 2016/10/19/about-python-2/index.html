@@ -76,7 +76,7 @@
   </div>
 </div>
 
-<div class="tagcloud" id="fbox-tagcloud" style="margin:10px; display:none; overflow: hidden"><a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/DIP/" style="font-size: 14px;">DIP</a> <a href="/tags/Github/" style="font-size: 14px;">Github</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/LaTeX/" style="font-size: 14px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/bookmarks/" style="font-size: 14px;">bookmarks</a> <a href="/tags/python/" style="font-size: 25px;">python</a> <a href="/tags/tricks/" style="font-size: 36px;">tricks</a></div>
+<div class="tagcloud" id="fbox-tagcloud" style="margin:10px; display:none; overflow: hidden"><a href="/tags/Blog/" style="font-size: 14px;">Blog</a> <a href="/tags/DIP/" style="font-size: 14px;">DIP</a> <a href="/tags/Github/" style="font-size: 14px;">Github</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/LaTeX/" style="font-size: 14px;">LaTeX</a> <a href="/tags/Linux/" style="font-size: 14px;">Linux</a> <a href="/tags/bookmarks/" style="font-size: 14px;">bookmarks</a> <a href="/tags/clustering/" style="font-size: 14px;">clustering</a> <a href="/tags/python/" style="font-size: 25px;">python</a> <a href="/tags/tricks/" style="font-size: 36px;">tricks</a></div>
 
   </header>
   <div id="main-content" class="wrap">
@@ -94,6 +94,8 @@
         
   
     <a href='/tags/python/' class='pure-button pull-right' style='margin:3px;'>python</a>
+  
+    <a href='/tags/clustering/' class='pure-button pull-right' style='margin:3px;'>clustering</a>
   
 
 
@@ -125,6 +127,130 @@ for i in range(len(lines)):
     write_to.write(lines[i])
 
 write_to.close()
+</code></pre><h3 id="python中若干聚类方法的使用"><a href="#python中若干聚类方法的使用" class="headerlink" title="python中若干聚类方法的使用"></a>python中若干聚类方法的使用</h3><p>数据存于文本文件中，一行代表一个样本，每维的特征值之间以单个空格间隔。</p>
+<pre><code>import sklearn.cluster as cluster
+import numpy
+import networkx
+import matplotlib.pyplot as plt
+
+
+# main procedure
+if __name__ == &quot;__main__&quot;:
+
+    # algorithm names and parameter settings
+    clustering_configs = [
+        # K-Means
+        [&apos;KMeans&apos;, {&apos;n_clusters&apos; : 5}],
+        # Ward
+        [&apos;AgglomerativeClustering&apos;, {
+                    &apos;n_clusters&apos; : 5,
+                    &apos;linkage&apos; : &apos;ward&apos;
+                    }],
+        # DBSCAN
+        [&apos;DBSCAN&apos;, {&apos;eps&apos; : 0.15}]
+    ]
+
+    # load data from standard input
+    data = open(&quot;path to your file&quot;,&quot;r&quot;)
+    data=data.readlines()
+    X=[]
+    for line in data:
+        x1, x2 = line.strip().split()
+        X.append([float(x1), float(x2[:-2])])
+    X = numpy.array(X)
+
+
+    clustering_results = {}
+
+    for alg_name, alg_params in clustering_configs:
+
+        class_ = getattr(cluster, alg_name)
+        if alg_name == &apos;KMeans&apos;:
+            instance_= class_(n_clusters = alg_params.get(&apos;n_clusters&apos;))
+
+        if alg_name == &apos;AgglomerativeClustering&apos;:
+            instance_= class_(n_clusters = alg_params.get(&apos;n_clusters&apos;), linkage = alg_params.get(&apos;linkage&apos;))
+
+        if alg_name == &apos;DBSCAN&apos;:
+            instance_ = class_(eps = alg_params.get(&apos;eps&apos;))
+
+        s = instance_.fit(X)
+
+        clustering_results[alg_name] = instance_.fit_predict(X)
+
+
+    # number of data points
+    n = X.shape[0]
+
+    G = networkx.Graph()
+
+    for i in xrange(n):
+        for j in xrange(i+1, n):
+            count = 0
+            for results in clustering_results.values():
+                if results[i] == results[j]:
+                    count = count + 1
+
+            if count == len(clustering_results):
+                G.add_edge(i, j)
+
+    # assgin cluster labels to data points
+    class_label = 0
+    clustering_results[&apos;Meta&apos;] = numpy.zeros((n,))
+    for connected_component in networkx.connected_components(G):
+        for i in connected_component:
+            clustering_results[&apos;Meta&apos;][i] = class_label
+
+        class_label = class_label + 1
+
+    # plot the results
+    plt.subplot(221)
+    plt.scatter(X[:, 0], X[:, 1], c=clustering_results[&apos;KMeans&apos;])
+    plt.title(&quot;KMeans&quot;)
+
+    plt.subplot(222)
+    plt.scatter(X[:, 0], X[:, 1], c=clustering_results[&apos;AgglomerativeClustering&apos;])
+    plt.title(&quot;Ward&quot;)
+
+    plt.subplot(223)
+    plt.scatter(X[:, 0], X[:, 1], c=clustering_results[&apos;DBSCAN&apos;])
+    plt.title(&quot;DBSCAN&quot;)
+
+    plt.subplot(224)
+    plt.scatter(X[:, 0], X[:, 1], c=clustering_results[&apos;Meta&apos;])
+    plt.title(&quot;Meta&quot;)
+
+    plt.show()
+</code></pre><h3 id="python处理线性回归问题"><a href="#python处理线性回归问题" class="headerlink" title="python处理线性回归问题"></a>python处理线性回归问题</h3><pre><code>import sklearn.linear_model as sklinearm
+import numpy as np
+
+def impute(X):
+
+    shape_info = X.shape
+    sample_num, dim_num = shape_info
+    train_sample = X[X[:, dim_num - 1] == X[:, dim_num - 1]]
+
+    LRmodel = sklinearm.LinearRegression()
+    train_data = train_sample[:, 0 : dim_num - 1]    
+    train_target = train_sample[:, dim_num - 1]
+
+    LRmodel.fit(train_data, train_target)
+
+    parameters = LRmodel.coef_
+
+    for i in range(sample_num):
+        if X[i][dim_num - 1] != X[i][dim_num - 1]:
+            X[i][dim_num - 1] = np.dot(X[i, 0 : dim_num - 1], parameters)
+
+    return X
+
+if __name__ == &apos;__main__&apos;:
+
+    X = np.array([[1, 2, 3, 6], [2, 4, 6, np.nan], [3, 6, 9, 12]])
+    print &quot;Before:\n&quot;, X
+
+    Y = impute(X)
+    print &quot;After:\n&quot;, Y
 </code></pre>
         
       </div>
