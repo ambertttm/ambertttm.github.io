@@ -96,9 +96,13 @@
 <p>使用Python时注意几个问题：</p>
 <p><code>array</code>，<code>list</code>与<code>NumPy</code>数组的区别和联系，以及各自用法</p>
 <p>使Python程序高效快速：<a href="http://www.cnblogs.com/codemo/archive/2012/10/27/python_performance.html" target="_blank" rel="external">Python性能鸡汤,非常有效的提高性能的tips</a>，<a href="http://www.maxburstein.com/blog/speeding-up-your-python-code/" target="_blank" rel="external">Speeding Up Your Python Code</a></p>
-<h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><pre><code>os.mkdir(path string)
+<h3 id="pip安装的技巧"><a href="#pip安装的技巧" class="headerlink" title="pip安装的技巧"></a>pip安装的技巧</h3><h4 id="仅为当前用户安装"><a href="#仅为当前用户安装" class="headerlink" title="仅为当前用户安装"></a>仅为当前用户安装</h4><p>简单的pip install指令的安装需要root权限，实际上一个简单的处理手段即可避免，例如：</p>
+<pre><code>pip install --user lmdb
+</code></pre><p>在安装时，有时需要指定版本号，这个约束也很容易处理，例如</p>
+<pre><code>pip install --user protobuf==2.5.0
+</code></pre><h3 id="新建文件夹"><a href="#新建文件夹" class="headerlink" title="新建文件夹"></a>新建文件夹</h3><pre><code>os.mkdir(path string)
 os.makedirs(path string)
-</code></pre><h3 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h3><pre><code>import struct
+</code></pre><h3 id="逐字节读文件"><a href="#逐字节读文件" class="headerlink" title="逐字节读文件"></a>逐字节读文件</h3><pre><code>import struct
 
 file_need_to_be_read = open(path string, &apos;rb&apos;)
 example_value = struct.unpack(&apos;I&apos;, file_need_to_be_read.read(4))[0]
