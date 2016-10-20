@@ -106,6 +106,19 @@ os.makedirs(path string)
 
 file_need_to_be_read = open(path string, &apos;rb&apos;)
 example_value = struct.unpack(&apos;I&apos;, file_need_to_be_read.read(4))[0]
+</code></pre><h3 id="逐行读文件"><a href="#逐行读文件" class="headerlink" title="逐行读文件"></a>逐行读文件</h3><h4 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h4><pre><code>f = open(&quot;your file.txt&quot;)
+line = f.readline()
+while line:
+    print line
+    line = f.readline()
+
+f.close()
+</code></pre><h4 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h4><pre><code>for line in open(&quot;your file.txt&quot;):
+    print line
+</code></pre><h4 id="方法3"><a href="#方法3" class="headerlink" title="方法3"></a>方法3</h4><pre><code>f = open(&apos;your file.txt&apos;, &apos;r&apos;)
+lines = f.readlines()
+for line in lines:
+    print line
 </code></pre><h3 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h3><pre><code>hex_value = hex(dec_value)
 </code></pre><h3 id="NumPy数组保存"><a href="#NumPy数组保存" class="headerlink" title="NumPy数组保存"></a><code>NumPy</code>数组保存</h3><pre><code>np.save(file path string, NumPy array name)
 </code></pre><p>保存为<code>.npy</code>文件，除数据外文件头等所占空间为80字节</p>
@@ -113,8 +126,11 @@ example_value = struct.unpack(&apos;I&apos;, file_need_to_be_read.read(4))[0]
 <pre><code>from skimage import draw
 
 rr, cc = draw.line(begin point y, begin point x, end point y, end point x)
-
 img[rr, cc] = pixel_value
+</code></pre><h3 id="生成随机NumPy数组"><a href="#生成随机NumPy数组" class="headerlink" title="生成随机NumPy数组"></a>生成随机NumPy数组</h3><h4 id="长度为10，-0-1-之间均匀分布"><a href="#长度为10，-0-1-之间均匀分布" class="headerlink" title="长度为10，[0, 1)之间均匀分布"></a>长度为10，<code>[0, 1)</code>之间均匀分布</h4><pre><code>rand_array = numpy.random.random((size = (10, )))
+</code></pre><h4 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h4><pre><code>mu = 0
+sigma = 0.1
+rand_array = numpy.random.normal(mu, sigma, (10, ))
 </code></pre>
         
       </div>
